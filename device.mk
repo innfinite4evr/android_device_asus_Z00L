@@ -30,3 +30,15 @@ TARGET_SCREEN_WIDTH := 720
 
 # Inherit from msm8916-common
 $(call inherit-product, device/asus/msm8916-common/msm8916.mk)
+
+# Prebuilt kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/asus/Z00L-kernel/Image.gz-dtb
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+PRODUCT_COPY_FILES := \
+ $(LOCAL_KERNEL):kernel
+
+# Prebuilt Kernel
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
