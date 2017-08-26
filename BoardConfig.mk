@@ -42,7 +42,10 @@ TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_SYSTEM_PROP += device/asus/Z00L/system.prop
+
+#RAMDISK
+TARGET_USE_CM_RAMDISK := true
 
 # inherit from the proprietary version
 -include vendor/asus/Z00L/BoardConfigVendor.mk
