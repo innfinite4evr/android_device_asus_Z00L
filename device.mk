@@ -32,4 +32,5 @@ TARGET_SCREEN_WIDTH := 720
 $(call inherit-product, device/asus/msm8916-common/msm8916.mk)
 
 # Prebuilt kernel
-PRODUCT_COPY_FILES += \ $(LOCAL_KERNEL):kernel
+PRODUCT_COPY_FILES += \
+        $(LOCAL_DIR)/prebuilt/kernel:kernel
