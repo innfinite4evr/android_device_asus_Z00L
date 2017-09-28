@@ -25,7 +25,19 @@ TARGET_OTA_ASSERT_DEVICE := Z00L
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
 # Kernel
-TARGET_KERNEL_CONFIG := Z00L_defconfig
+#TARGET_KERNEL_CONFIG := Z00L_defconfig
+
+# Prebuilt kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+ LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+else
+ LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+# laxy hek ti build withiut kernel sources
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
