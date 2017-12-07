@@ -30,3 +30,21 @@ TARGET_SCREEN_WIDTH := 720
 
 # Inherit from msm8916-common
 $(call inherit-product, device/asus/msm8916-common/msm8916.mk)
+
+# Prebuilt Kernel
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES := \
+    $(LOCAL_KERNEL):kernel
+
+# laxy hek to build without kernel sources
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+# Prebuilt dtb
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/prebuilt/dt.img:dt.img

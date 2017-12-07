@@ -26,9 +26,17 @@ TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
 # Kernel
 TARGET_KERNEL_CONFIG := Z00L_defconfig
+TARGET_KERNEL_BUILD_VARIANT := user
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
+# Prebuilt kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
+
+# DTB
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dt.img
 
 # inherit from the proprietary version
 -include vendor/asus/Z00L/BoardConfigVendor.mk
